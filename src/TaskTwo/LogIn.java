@@ -8,11 +8,11 @@ import java.util.Arrays;
 
 public class LogIn implements ActionListener {
     JFrame f;
-    JLabel lSiginTitle, lSignUpTitle, lUsername, lPassword, lUsername2, lPassword2, lRepassword, lYourAttempt, lAttempt, lCorrect, lIncorrect;
+    JLabel lSigInTitle, lSignUpTitle, lUsername, lPassword, lUsername2, lPassword2, lRepassword, lYourAttempt, lAttempt, lCorrect, lIncorrect;
     JButton btnSignUp, btnSignIn, btnClear, btnClear2;
     JTextField tUserName1, tUserName2;
     JPasswordField tPassword, tPassword2, tRepassword;
-    JPanel pMain, pLogin, pLoginCenter, pSign, pSignCenter, pCorrect, pIncorrect;
+    JPanel pMain, pSignIn, pSignInCenter, pSignUp, pSignUpCenter, pCorrect, pIncorrect;
     CardLayout cl;
 
     int attempt = 3;
@@ -22,43 +22,58 @@ public class LogIn implements ActionListener {
     public LogIn(){
         f = new JFrame("Username Login");
         ImageIcon img = new ImageIcon("assets/man_4140048.png");
-        Font font = new Font("Eurostile",Font.PLAIN, 16);
+//        Font font = new Font("Eurostile",Font.PLAIN, 16);
         cl = new CardLayout();
+
         pMain = new JPanel();
         pMain.setLayout(cl);
-        pLogin = new JPanel(new BorderLayout(10,10));
-        pLoginCenter = new JPanel(new GridLayout(4,2));
-        pSign = new JPanel(new BorderLayout(10,10));
-        pSignCenter = new JPanel(new GridLayout(4,2));
+
+        pSignIn = new JPanel(new BorderLayout(10,10));
+        pSignInCenter = new JPanel(new GridLayout(4,2));
+
+        pSignUp = new JPanel(new BorderLayout(10,10));
+        pSignUpCenter = new JPanel(new GridLayout(4,2));
+
         pCorrect = new JPanel(new BorderLayout(10,10));
+
         pIncorrect = new JPanel(new BorderLayout(10,10));
-        lSiginTitle = new JLabel("Sign In");
-        lSiginTitle.setHorizontalAlignment(JLabel.CENTER);
-        lSiginTitle.setVerticalAlignment(JLabel.CENTER);
+
+        lSigInTitle = new JLabel("Sign In");
+        lSigInTitle.setHorizontalAlignment(JLabel.CENTER);
+        lSigInTitle.setVerticalAlignment(JLabel.CENTER);
+
         lSignUpTitle = new JLabel("Sign Up");
         lSignUpTitle.setHorizontalAlignment(JLabel.CENTER);
         lSignUpTitle.setVerticalAlignment(JLabel.CENTER);
+
         lUsername = new JLabel("Username:");
         lUsername.setHorizontalAlignment(JLabel.CENTER);
         lUsername.setVerticalAlignment(JLabel.CENTER);
+
         lPassword = new JLabel("Password:");
         lPassword.setHorizontalAlignment(JLabel.CENTER);
         lPassword.setVerticalAlignment(JLabel.CENTER);
+
         lUsername2 = new JLabel("Username:");
         lUsername2.setHorizontalAlignment(JLabel.CENTER);
         lUsername2.setVerticalAlignment(JLabel.CENTER);
+
         lPassword2 = new JLabel("Password:");
         lPassword2.setHorizontalAlignment(JLabel.CENTER);
         lPassword2.setVerticalAlignment(JLabel.CENTER);
+
         lRepassword = new JLabel("Re-Password:");
         lRepassword.setHorizontalAlignment(JLabel.CENTER);
         lRepassword.setVerticalAlignment(JLabel.CENTER);
+
         lYourAttempt = new JLabel("Your Attempts Have Only:");
         lYourAttempt.setVerticalAlignment(JLabel.CENTER);
+
         lAttempt = new JLabel();
         lAttempt.setText(String.valueOf(attempt));
         lAttempt.setHorizontalAlignment(JLabel.CENTER);
         lAttempt.setVerticalAlignment(JLabel.CENTER);
+
         ImageIcon imgCorrect = new ImageIcon("assets/correct.png");
         lCorrect = new JLabel("Welcome to Our Application");
         lCorrect.setIcon(imgCorrect);
@@ -67,6 +82,7 @@ public class LogIn implements ActionListener {
         lCorrect.setIconTextGap(15);
         lCorrect.setHorizontalAlignment(JLabel.CENTER);
         lCorrect.setVerticalAlignment(JLabel.CENTER);
+
         ImageIcon imgIncorrect = new ImageIcon("assets/incorrect.png");
         lIncorrect = new JLabel("You have used all of three attempts!!!");
         lIncorrect.setIcon(imgIncorrect);
@@ -91,36 +107,36 @@ public class LogIn implements ActionListener {
         btnClear.addActionListener(this);
         btnClear2.addActionListener(this);
 
-        pSignCenter.add(lUsername);
-        pSignCenter.add(tUserName1);
-        pSignCenter.add(lPassword);
-        pSignCenter.add(tPassword);
-        pSignCenter.add(lRepassword);
-        pSignCenter.add(tRepassword);
-        pSignCenter.add(btnSignUp);
-        pSignCenter.add(btnClear);
+        pSignUpCenter.add(lUsername);
+        pSignUpCenter.add(tUserName1);
+        pSignUpCenter.add(lPassword);
+        pSignUpCenter.add(tPassword);
+        pSignUpCenter.add(lRepassword);
+        pSignUpCenter.add(tRepassword);
+        pSignUpCenter.add(btnSignUp);
+        pSignUpCenter.add(btnClear);
 
-        pLoginCenter.add(lUsername2);
-        pLoginCenter.add(tUserName2);
-        pLoginCenter.add(lPassword2);
-        pLoginCenter.add(tPassword2);
-        pLoginCenter.add(btnSignIn);
-        pLoginCenter.add(btnClear2);
-        pLoginCenter.add(lYourAttempt);
-        pLoginCenter.add(lAttempt);
+        pSignInCenter.add(lUsername2);
+        pSignInCenter.add(tUserName2);
+        pSignInCenter.add(lPassword2);
+        pSignInCenter.add(tPassword2);
+        pSignInCenter.add(btnSignIn);
+        pSignInCenter.add(btnClear2);
+        pSignInCenter.add(lYourAttempt);
+        pSignInCenter.add(lAttempt);
 
-        pSign.add(lSignUpTitle,BorderLayout.NORTH);
-        pSign.add(pSignCenter,BorderLayout.CENTER);
+        pSignUp.add(lSignUpTitle,BorderLayout.NORTH);
+        pSignUp.add(pSignUpCenter,BorderLayout.CENTER);
 
-        pLogin.add(lSiginTitle,BorderLayout.NORTH);
-        pLogin.add(pLoginCenter,BorderLayout.CENTER);
+        pSignIn.add(lSigInTitle,BorderLayout.NORTH);
+        pSignIn.add(pSignInCenter,BorderLayout.CENTER);
 
         pCorrect.add(lCorrect, BorderLayout.CENTER);
 
         pIncorrect.add(lIncorrect, BorderLayout.CENTER);
 
-        pMain.add(pSign,"SignUp");
-        pMain.add(pLogin,"LogIn");
+        pMain.add(pSignUp,"SignUp");
+        pMain.add(pSignIn,"LogIn");
         pMain.add(pCorrect,"Correct");
         pMain.add(pIncorrect, "Incorrect");
 
